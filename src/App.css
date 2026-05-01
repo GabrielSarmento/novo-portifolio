@@ -1,0 +1,206 @@
+/* ============================================================================
+   Estilos globais do portfólio
+   ========================================================================= */
+
+/* Tipografia base */
+.App {
+  background-color: #05080f;
+  color: #e2e8f0;
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+}
+
+/* Fontes pixel / retrô */
+.font-pixel {
+  font-family: "Press Start 2P", monospace;
+  letter-spacing: 0.02em;
+}
+
+.font-vt323 {
+  font-family: "VT323", monospace;
+  letter-spacing: 0.03em;
+}
+
+.font-mono {
+  font-family: "JetBrains Mono", monospace;
+}
+
+/* Gradiente do nome (azul → laranja) */
+.text-gradient-name {
+  background: linear-gradient(
+    90deg,
+    #3b82f6 0%,
+    #60a5fa 35%,
+    #fbbf24 60%,
+    #f97316 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Sombra pixelada nos títulos principais */
+.pixel-shadow {
+  text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* Scanlines sobre o hero (efeito CRT) */
+.scanlines::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0,
+    rgba(0, 0, 0, 0) 2px,
+    rgba(0, 0, 0, 0.18) 2px,
+    rgba(0, 0, 0, 0.18) 4px
+  );
+  z-index: 2;
+}
+
+/* Filtro de pixelização aplicado à imagem do hero */
+.pixelated {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+/* Reveal — animações de entrada por scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 0.8s ease-out,
+    transform 0.8s ease-out;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 {
+  transition-delay: 0.1s;
+}
+.reveal-delay-2 {
+  transition-delay: 0.25s;
+}
+.reveal-delay-3 {
+  transition-delay: 0.4s;
+}
+.reveal-delay-4 {
+  transition-delay: 0.55s;
+}
+
+/* Cartão de projeto — borda azul brilhante com glow */
+.project-card {
+  background: linear-gradient(145deg, #0a1024 0%, #0f1833 100%);
+  border: 1.5px solid rgba(59, 130, 246, 0.45);
+  transition:
+    transform 0.4s ease,
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(96, 165, 250, 0.9);
+  box-shadow:
+    0 0 0 1px rgba(96, 165, 250, 0.3),
+    0 12px 40px -12px rgba(59, 130, 246, 0.5);
+}
+
+/* Cartão de skill — glow laranja na base */
+.skill-card {
+  background: linear-gradient(180deg, #0a1024 0%, #0d142b 100%);
+  border: 1px solid rgba(249, 115, 22, 0.35);
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease,
+    border-color 0.4s ease;
+  box-shadow:
+    0 0 0 1px rgba(249, 115, 22, 0.08),
+    0 20px 40px -20px rgba(249, 115, 22, 0.35);
+}
+
+.skill-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  border-color: rgba(249, 115, 22, 0.7);
+  box-shadow:
+    0 0 0 1px rgba(249, 115, 22, 0.25),
+    0 24px 48px -16px rgba(249, 115, 22, 0.55);
+}
+
+/* Botão contorno azul */
+.btn-outline-blue {
+  border: 1.5px solid rgba(59, 130, 246, 0.6);
+  color: #e2e8f0;
+  background: transparent;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.2s ease;
+}
+.btn-outline-blue:hover {
+  background-color: rgba(59, 130, 246, 0.15);
+  border-color: #3b82f6;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Botão sólido azul (CTA principal) */
+.btn-primary-blue {
+  background-color: #2563eb;
+  color: #ffffff;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease,
+    box-shadow 0.3s ease;
+}
+.btn-primary-blue:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -8px rgba(37, 99, 235, 0.65);
+}
+
+/* Indicador do item ativo do menu */
+.nav-link {
+  position: relative;
+  transition: color 0.3s ease;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: #3b82f6;
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+.nav-link.active {
+  color: #60a5fa;
+}
+
+/* Scrollbar customizada */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #05080f;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
